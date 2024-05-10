@@ -189,10 +189,10 @@ class GenAiQuestionGenerator(object):
         """
         generated_answers = {}
 
-        # Example: Generate a question for the generated text
-        question = "What is your opinion about the following statement? " + generated_text
+        # Example: Generate a question for the generated text:
+        question = "What is your opinion about the following statement? Agree\ Disagree?"
 
-        # Generate answers using the GenAiQuestionGenerator
+        # Generate answers using the GenAiQuestionGenerator:
         generated_answers[question] = self._generate_answer(question)
 
         return generated_answers

@@ -24,8 +24,8 @@ class TextSafetyIntegrityEvaluator:
         """
         safety_and_integrity_results = {}
 
-        # Generate questions and answers based on the generated text
-        generated_answers = self.question_generator.generate_answers(generated_text)
+        # Generate questions and answers based on the generated text:
+        generated_answers = self.generate_answers(generated_text)
 
         # Evaluate safety and integrity of the generated answers:
         for question, answer in generated_answers.items():
@@ -57,6 +57,20 @@ class TextSafetyIntegrityEvaluator:
         # If all checks pass, consider the question- answer pair as intact:
         return True
 
+    def generate_answers(self, generated_text: str) -> dict:
+        """
+            This function generates questions and answers based on the generated text.
+            Returns a dictionary with questions as keys and generated answers as values.
+        """
+        generated_answers = {}
+
+        # Generate a question for the generated text:
+        question = "What is your opinion about the following statement? " + generated_text
+
+        # Generate answers using the GenAiQuestionGenerator:
+        generated_answers[question] = self.question_generator.generate_answers(question)
+
+        return generated_answers
 
 def main():
     # Initialize GenAiQuestionGenerator and SafetyEvaluator:
