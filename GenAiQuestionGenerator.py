@@ -182,6 +182,20 @@ class GenAiQuestionGenerator(object):
                 success_rate += 1
         return success_rate * 2
 
+    def generate_answers(self, generated_text: str) -> dict:
+        """
+            This function generates questions and answers based on the generated text.
+            Returns a dictionary with questions as keys and generated answers as values.
+        """
+        generated_answers = {}
+
+        # Example: Generate a question for the generated text
+        question = "What is your opinion about the following statement? " + generated_text
+
+        # Generate answers using the GenAiQuestionGenerator
+        generated_answers[question] = self._generate_answer(question)
+
+        return generated_answers
 
 def main():
     api_key = "AIzaSyB-HcnrRqN9qopgoLC2HhedpQykv2h6HNE"
