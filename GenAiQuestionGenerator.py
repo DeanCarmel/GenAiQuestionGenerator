@@ -193,7 +193,13 @@ class GenAiQuestionGenerator(object):
         question = "What is your opinion about the following statement? Agree\ Disagree?"
 
         # Generate answers using the GenAiQuestionGenerator:
-        generated_answers[question] = self._generate_answer(question)
+        generated_answers[question] = [
+            {
+                "goal": generated_text,
+                "sol1": "Option 1",
+                "sol2": "Option 2"
+            }
+        ]
 
         return generated_answers
 

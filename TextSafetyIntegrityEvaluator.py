@@ -64,11 +64,13 @@ class TextSafetyIntegrityEvaluator:
         """
         generated_answers = {}
 
-        # Generate a question for the generated text:
-        question = "What is your opinion about the following statement? " + generated_text
+        # Example: Generate a question for the generated text:
+        question = "What is your opinion about the following statement? Agree\ Disagree?"
 
         # Generate answers using the GenAiQuestionGenerator:
-        generated_answers[question] = self.question_generator.generate_answers(question)
+        generated_answer = "This is the generated answer for the question: " + generated_text
+
+        generated_answers[question] = generated_answer
 
         return generated_answers
 
